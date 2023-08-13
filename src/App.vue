@@ -1,15 +1,25 @@
 <script setup lang="ts">
 import { Plus } from '@element-plus/icons-vue'
 import HelloWorld from '@/components/HelloWorld.vue'
-
-
+import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>
 
 <template>
   <div>
     <el-button :icon="Plus" size="default" type="primary">Default</el-button>
     <HelloWorld />
- </div>
+
+    <!--svg:图标外层容器节点，内部需要与use标签结合使用-->
+    <svg>
+      <!--xlink:href执行用哪一个图标，属性值务必#icon-图标名字-->
+      <!--use标签fill属性可以设置图标颜色-->
+      <use xlink:href="#icon-phone" fill="green"></use>
+    </svg>
+
+    <hr />
+
+    <svg-icon name="phone" fill="blue" width="100px" height="100px"></svg-icon>
+  </div>
 </template>
 
 <style scoped>

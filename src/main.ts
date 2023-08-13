@@ -10,7 +10,11 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 const app = createApp(App)
 
 app.use(ElementPlus, {
-    locale: zhCn
+  locale: zhCn,
 })
 
+console.log(import.meta.env)
+
+// svg插件配置
+import 'virtual:svg-icons-register'
 app.mount('#app')
