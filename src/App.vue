@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { Plus } from '@element-plus/icons-vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+
+
 </script>
 
 <template>
   <div>
     <el-button :icon="Plus" size="default" type="primary">Default</el-button>
-  </div>
+    <HelloWorld />
+ </div>
 </template>
 
 <style scoped>
