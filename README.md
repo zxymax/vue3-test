@@ -214,9 +214,44 @@ export default {
 }
 ```
 
-mian.ts 文件 引入 components/index.ts 文件
+mian.ts 文件 引入 components/index.ts 文件 
 ```ts
 import globalComponent from '@/components'
 
 app.use(globalComponent)
 ```
+
+# 继承Sass
+vite.config.ts更新配置
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  // scss 全局变量配置
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnable: true,
+        additionalData: '@import "./src/styles/variable.scss";'
+      }
+    }
+  }
+})
+
+```
+创建 styles/variable.scss
+```scss
+$color: red;
+```
+
+使用 variable 变量
+<style scoped lang="scss">
+div {
+  h1 {
+    color: $color;
+  }
+}
+</style>
