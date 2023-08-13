@@ -17,4 +17,8 @@ console.log(import.meta.env)
 
 // svg插件配置
 import 'virtual:svg-icons-register'
+
+import globalComponent from '@/components'
+
+app.use(globalComponent)
 app.mount('#app')

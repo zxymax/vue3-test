@@ -157,31 +157,66 @@ tsconfig.json
 ```
 
 # Svg图标配置
+
 #### 安装vite-plugin-svg-icons
+
 - yarn add vite-plugin-svg-icons -D
 
 更新vite.config.ts配置
+
 ```ts
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons' 
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),
-  createSvgIconsPlugin({
-    iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-    symbolId: 'icon-[dir]-[name]'
-  })],
+  plugins: [
+    vue(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+      symbolId: 'icon-[dir]-[name]',
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve('./src'),
     },
   },
 })
-
 ```
 
 main.ts 添加svg配置
+
 ```ts
 import 'virtual:svg-icons-register'
 ```
 
+# 自定义插件注册全局组件 Svg
+
+创建 components/index.ts 文件
+```ts
+// 引入需要注册的组件
+import SvgIcon from './SvgIcon/index.vue'
+
+const allGlobalComponent = {
+    SvgIcon
+}
+
+// 对外暴露一个插件对象
+export default {
+    install(app) { // 名字必须是install
+        console.log('install components')
+
+        Object.keys(allGlobalComponent).forEach(key => {
+            // 注册为全局组件
+            app.component(key, allGlobalComponent[key])
+        })
+    }
+}
+```
+
+mian.ts 文件 引入 components/index.ts 文件
+```ts
+import globalComponent from '@/components'
+
+app.use(globalComponent)
+```
