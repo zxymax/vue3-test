@@ -1,21 +1,3 @@
-# Vue 3 + TypeScript + Vite
-
-# Eslint安装
-- yarn add -D eslint
-
-#### 生成配置文件
-- npx eslint --init
-
-# vue3环境代码校验插件安装
-- eslint-config-prettier
-- eslint-plugin-import
-- eslint-plugin-node
-- eslint-plugin-prettier
-- eslint-plugin-vue
-- @babel/eslint-parser
-
-#### 修改.eslintrc.cjs配置文件
-```cjs
 module.exports = {
     // 运行环境
     "env": {
@@ -66,7 +48,7 @@ module.exports = {
     ],
     "rules": {
         "no-var": "error",
-        "no-multiple-empty-line": ["warn", { max: 1} ],
+        "no-multiple-empty-lines": ["warn", { max: 1} ],
         "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
         "no-unexpected-multiline": "error",
@@ -85,24 +67,3 @@ module.exports = {
         "vue/attribute-hyphenation": "off"
     }
 }
-
-```
-
-# 配置prettier
-安装依赖
-- eslint-plugin-prettier
-- prettier
-- eslint-config-prettier
-
-#### prettierrc.json规则
-```json
-{
-    "singleQuote": true,
-    "semi": false,
-    "bracketSpacing": true,
-    "htmlWhtespaceSensitivity": "ignore",
-    "endOfLine": "auto",
-    "trailingComma": "all",
-    "tabWidth": 2
-}
-```

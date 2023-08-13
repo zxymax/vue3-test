@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
+    "lint": "eslint src",
+    "fix": "eslint src --fix",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
@@ -12,7 +14,17 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.22.10",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vue-tsc": "^1.8.5"
