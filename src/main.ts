@@ -21,6 +21,7 @@ axios({
 
 const app = createApp(App)
 app.use(router)
+import './permission'
 app.use(pinia)
 app.use(ElementPlus, {
   locale: zhCn,

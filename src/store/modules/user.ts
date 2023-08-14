@@ -44,7 +44,7 @@ let useUserStore = defineStore('User', {
       this.username = ''
       this.avatar = ''
       REMOVE_TOKEN()
-    }
+    },
   },
 
   getters: {},

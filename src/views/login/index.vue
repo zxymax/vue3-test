@@ -67,7 +67,7 @@ const login = async () => {
     await useStore.userLogin(loginForm)
 
     let redirect: any = $route.query.redirect
-    $router.push({ path: redirect || '/'})
+    $router.push({ path: redirect || '/' })
     $router.push('/')
     ElNotification({
       type: 'success',

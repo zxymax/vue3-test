@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router'
 import useLayoutSettingStore from '../../../store/modules/setting'
 
 import useUserStore from '../../../store/modules/user'
@@ -25,8 +25,8 @@ let $router = useRouter()
 let $route = useRoute()
 
 const logOut = () => {
-    userStore.userLogOut()
-    $router.push({path: '/login', query: { redirect: $route.path}})
+  userStore.userLogOut()
+  $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 </script>
 <script lang="ts">
@@ -64,7 +64,7 @@ export default {
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click="logOut" >退出登录</el-dropdown-item>
+          <el-dropdown-item @click="logOut">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
