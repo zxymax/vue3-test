@@ -1,21 +1,32 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 import request from '@/utils/request'
+import { reqLogin } from './api/user'
 
 onMounted(() => {
+
+  // test 1
   request({
     url: '/user/login',
     method: 'post',
     data: {
       username: 'admin',
-      password: '111111'
-    }
-  }).then((res) => {console.log(res)})
-})
+      password: '111111',
+    },
+  }).then((res) => {
+    console.log(res)
+  })
 
+  // test 2
+  reqLogin({
+    username: 'admin',
+    password: '111111'
+  })
+
+})
 </script>
 
 <template>
