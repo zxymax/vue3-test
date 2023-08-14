@@ -4,7 +4,12 @@
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
-        <el-form class="login_form" :rules="rules" ref="loginForms" :model="loginForm">
+        <el-form
+          class="login_form"
+          :rules="rules"
+          ref="loginForms"
+          :model="loginForm"
+        >
           <h1>Hello</h1>
           <h2>Welcome</h2>
           <el-form-item props="username">
@@ -73,31 +78,30 @@ const login = async () => {
   }
 }
 const validatorUserName = (rule: any, value: any, callback: any) => {
-    if (value.length >= 5) {
-        callback()
-    } else {
-        callback(new Error('账号长度至少5位'))
-    }
+  if (value.length >= 5) {
+    callback()
+  } else {
+    callback(new Error('账号长度至少5位'))
+  }
 }
 
 const validatorUserPassword = (rule: any, value: any, callback: any) => {
-    if (value.length >= 6) {
-        callback()
-    } else {
-        callback(new Error('密码长度至少5位'))
-    }
+  if (value.length >= 6) {
+    callback()
+  } else {
+    callback(new Error('密码长度至少5位'))
+  }
 }
 const rules = {
-    username: [
-        // { required: true, min: 6, max: 10, message: "账号长度至少6位", trigger: "change" }
-        { trigger: 'change', validator: validatorUserName }
-    ],
-    password: [
+  username: [
+    // { required: true, min: 6, max: 10, message: "账号长度至少6位", trigger: "change" }
+    { trigger: 'change', validator: validatorUserName },
+  ],
+  password: [
     // { required: true, min: 6, max: 15, message: "密码长度至少6位", trigger: "change" }
-    { trigger: 'change', validator: validatorUserPassword }
-    ]
+    { trigger: 'change', validator: validatorUserPassword },
+  ],
 }
-
 </script>
 
 <style scoped>
