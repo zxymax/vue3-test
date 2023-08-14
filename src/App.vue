@@ -7,7 +7,6 @@ import request from '@/utils/request'
 import { reqLogin } from './api/user'
 
 onMounted(() => {
-
   // test 1
   request({
     url: '/user/login',
@@ -23,9 +22,8 @@ onMounted(() => {
   // test 2
   reqLogin({
     username: 'admin',
-    password: '111111'
+    password: '111111',
   })
-
 })
 </script>
 
@@ -45,6 +43,8 @@ onMounted(() => {
     <hr />
 
     <svg-icon name="phone" fill="blue" width="100px" height="100px"></svg-icon>
+
+    <router-view></router-view>
   </div>
 </template>
 
