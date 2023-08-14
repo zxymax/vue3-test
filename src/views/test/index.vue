@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="test">
+  <div class="test">
     <h1>hello</h1>
     <el-button :icon="Plus" size="default" type="primary">Default</el-button>
     <HelloWorld />
@@ -43,8 +43,7 @@ onMounted(() => {
     <hr />
 
     <svg-icon name="phone" fill="blue" width="100px" height="100px"></svg-icon>
-    </div>
-   
+  </div>
 </template>
 
 <style scoped lang="scss">
