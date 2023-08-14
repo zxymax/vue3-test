@@ -47,7 +47,7 @@ import { reactive, ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ElNotification } from 'element-plus'
 import useUserStore from '@/store/modules/user'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 let $router = useRouter()
 let useStore = useUserStore()
@@ -58,11 +58,16 @@ let loginForms = ref()
 
 let loading = ref(false)
 
+let $route = useRoute()
+
 const login = async () => {
   loading.value = true
   await loginForms.value.validate()
   try {
     await useStore.userLogin(loginForm)
+
+    let redirect: any = $route.query.redirect
+    $router.push({ path: redirect || '/'})
     $router.push('/')
     ElNotification({
       type: 'success',
