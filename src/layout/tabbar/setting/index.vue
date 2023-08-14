@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import useLayoutSettingStore from '../../../store/modules/setting'
 
+import useUserStore from '../../../store/modules/user'
+
+let userStore = useUserStore()
+
 let layoutSettingStore = useLayoutSettingStore()
 
 const updateRefresh = () => {
@@ -8,12 +12,12 @@ const updateRefresh = () => {
 }
 
 const fullScreen = () => {
-    let full = document.fullscreenElement
-    if (!full) {
-        document.documentElement.requestFullscreen()
-    } else {
-        document.exitFullscreen()
-    }
+  let full = document.fullscreenElement
+  if (!full) {
+    document.documentElement.requestFullscreen()
+  } else {
+    document.exitFullscreen()
+  }
 }
 </script>
 <script lang="ts">
@@ -30,15 +34,21 @@ export default {
       circle
       @click="updateRefresh"
     ></el-button>
-    <el-button type="primary" size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
+    <el-button
+      type="primary"
+      size="small"
+      icon="FullScreen"
+      circle
+      @click="fullScreen"
+    ></el-button>
     <el-button type="primary" size="small" icon="Setting" circle></el-button>
     <img
-      src="https://images.evetech.net/alliances/99005338/logo?size=64"
+      :src="userStore.avatar"
       style="width: 24px; height: 24px; margin: 0 10px"
     />
     <el-dropdown>
       <span class="el-dropdown-link">
-        admin
+        {{userStore.username}}
         <el-icon class="el-icon--right">
           <arrow-down />
         </el-icon>
