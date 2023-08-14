@@ -1,9 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div>SKU管理</div>
+  <div>SKU管理</div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

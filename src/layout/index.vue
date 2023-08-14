@@ -1,27 +1,30 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
 import Main from './main/index.vue'
+import TabBar from './tabbar/index.vue'
 import useUserStore from '@/store/modules/user'
 
+
+let $route = useRoute()
+
+// console.log($route.path)
 let userStore = useUserStore()
-
-
 </script>
+
 <template>
   <div class="layout_container">
     <div class="layout_side">
       <Logo />
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#001529" text-color="white">
+        <el-menu  :default-active="$route.path" background-color="#001529" text-color="white" active-text-color="yellowgreen">
           <Menu :menuList="userStore.menuRoutes" />
         </el-menu>
       </el-scrollbar>
     </div>
     <div class="layout_tabbar">
-      <el-icon>
-        <Edit></Edit>
-      </el-icon>
+      <TabBar></TabBar>
     </div>
     <div class="layout_main">
       <Main></Main>

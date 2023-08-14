@@ -1,9 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div>role</div>
+  <div>role</div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -16,7 +16,7 @@ export const constantRoute = [
     meta: {
       title: 'Layout',
       hidden: false,
-      icon: 'Avatar'
+      icon: 'Avatar',
     },
     redirect: '/home',
     children: [
@@ -47,7 +47,7 @@ export const constantRoute = [
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon: 'Platform'
+      icon: 'Platform',
     },
   },
   {
@@ -57,7 +57,7 @@ export const constantRoute = [
     meta: {
       title: '权限管理',
       hidden: false,
-      icon: 'Lock'
+      icon: 'Lock',
     },
     children: [
       {
@@ -68,7 +68,7 @@ export const constantRoute = [
           title: '用户管理',
           hidden: false,
           icon: 'User',
-        }
+        },
       },
       {
         path: '/acl/role',
@@ -90,7 +90,7 @@ export const constantRoute = [
           icon: 'Monitor',
         },
       },
-    ]
+    ],
   },
   {
     path: '/product',
@@ -99,7 +99,7 @@ export const constantRoute = [
     meta: {
       title: '商品管理',
       hidden: false,
-      icon: 'Goods'
+      icon: 'Goods',
     },
     children: [
       {
@@ -142,7 +142,7 @@ export const constantRoute = [
           icon: 'Orange',
         },
       },
-    ]
+    ],
   },
   {
     path: '/:pathMatch(.*)*',
