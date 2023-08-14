@@ -22,13 +22,17 @@ export default {
       <component :is="layoutSettingStore.fold ? 'Fold' : 'Expand'"></component>
     </el-icon>
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="item.meta.icon" :to="item.path">
+      <el-breadcrumb-item
+        v-for="(item, index) in $route.matched"
+        :key="index"
+        v-show="item.meta.icon"
+        :to="item.path"
+      >
         <el-icon>
-            <component :is="item.meta.icon"></component>
+          <component :is="item.meta.icon"></component>
         </el-icon>
-        <span>{{item.meta.title}}</span>
+        <span>{{ item.meta.title }}</span>
       </el-breadcrumb-item>
-      
     </el-breadcrumb>
   </div>
 </template>

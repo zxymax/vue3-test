@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useLayoutSettingStore from '../../../store/modules/setting'
+
+let layoutSettingStore = useLayoutSettingStore()
+
+const updateRefresh = () => {
+    layoutSettingStore.refresh = !layoutSettingStore.refresh
+}
+
+</script>
 <script lang="ts">
 export default {
   name: 'Setting',
@@ -6,7 +15,7 @@ export default {
 </script>
 <template>
   <div>
-    <el-button type="primary" size="small" icon="Refresh" circle></el-button>
+    <el-button type="primary" size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
     <el-button type="primary" size="small" icon="FullScreen" circle></el-button>
     <el-button type="primary" size="small" icon="Setting" circle></el-button>
     <img
