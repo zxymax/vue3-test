@@ -44,7 +44,10 @@ export default {
           </template>
         </el-menu-item>
       </template>
-      <el-sub-menu :index="index" v-if="item.children && item.children.length > 1">
+      <el-sub-menu
+        :index="index"
+        v-if="item.children && item.children.length > 1"
+      >
         <template #title>
           <el-icon>
             <component :is="item.meta.icon"></component>
