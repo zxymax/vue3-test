@@ -8,7 +8,7 @@ let layoutSettingStore = useLayoutSettingStore()
 <template>
   <div class="logo">
     <img :src="setting.logo" />
-    <p v-show="!layoutSettingStore.fold?true:false">{{ setting.title }}</p>
+    <p v-show="!layoutSettingStore.fold ? true : false">{{ setting.title }}</p>
   </div>
 </template>
 
