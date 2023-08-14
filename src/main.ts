@@ -7,6 +7,18 @@ import 'element-plus/dist/index.css'
 //@ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
+import axios from 'axios'
+console.log(axios)
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'admin',
+    password: '111111'
+  }
+})
+
+
 const app = createApp(App)
 
 app.use(ElementPlus, {
