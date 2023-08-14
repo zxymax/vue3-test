@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
-
+import Main from './main/index.vue'
 import useUserStore from '@/store/modules/user'
 
 let userStore = useUserStore()
+
+
 </script>
 <template>
   <div class="layout_container">
@@ -21,7 +23,9 @@ let userStore = useUserStore()
         <Edit></Edit>
       </el-icon>
     </div>
-    <div class="layout_main">3</div>
+    <div class="layout_main">
+      <Main></Main>
+    </div>
   </div>
 </template>
 
