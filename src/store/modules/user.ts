@@ -1,34 +1,34 @@
 import { defineStore } from 'pinia'
 import { reqLogin } from '@/api/user'
-import type { ILoginForm } from '@/api/user/types'
+import type { ILoginForm, ILoginResponseData } from '@/api/user/types'
+import { IUserState } from './types/type'
+import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
 
 let useUserStore = defineStore('User', {
-    state: () => {
-        return {
-            token: localStorage.getItem('TOKEN')
-        }
-    },
-
-    actions: {
-        async userLogin(data: ILoginForm) {
-            let result: any = await reqLogin(data)
-            console.log(result)
-
-            if (result.code === 200) {
-                // pinia 存储token
-                this.token = result.data.token
-                localStorage.setItem('TOKEN', result.data.token)
-
-                return 'ok'
-            } else {
-                return Promise.reject(new Error(result.data.message))
-            }
-        }
-    },
-
-    getters: {
-
+  state: (): IUserState => {
+    return {
+      token: GET_TOKEN(),
     }
+  },
+
+  actions: {
+    async userLogin(data: ILoginForm) {
+      let result: ILoginResponseData = await reqLogin(data)
+      console.log(result)
+
+      if (result.code === 200) {
+        // pinia 存储token
+        this.token = result.data.token as string
+        SET_TOKEN(result.data.token as string)
+
+        return 'ok'
+      } else {
+        return Promise.reject(new Error(result.data.message))
+      }
+    },
+  },
+
+  getters: {},
 })
 
 export default useUserStore

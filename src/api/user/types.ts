@@ -4,7 +4,8 @@ export interface ILoginForm {
 }
 
 interface IDataType {
-  token: string
+  token?: string
+  message?: string
 }
 
 // 登录接口返回的数据类型
