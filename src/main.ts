@@ -4,6 +4,7 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from './router'
+import pinia from './store'
 //@ts-ignore
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
@@ -20,6 +21,7 @@ axios({
 
 const app = createApp(App)
 app.use(router)
+app.use(pinia)
 app.use(ElementPlus, {
   locale: zhCn,
 })
