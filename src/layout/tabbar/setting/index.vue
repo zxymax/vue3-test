@@ -4,9 +4,17 @@ import useLayoutSettingStore from '../../../store/modules/setting'
 let layoutSettingStore = useLayoutSettingStore()
 
 const updateRefresh = () => {
-    layoutSettingStore.refresh = !layoutSettingStore.refresh
+  layoutSettingStore.refresh = !layoutSettingStore.refresh
 }
 
+const fullScreen = () => {
+    let full = document.fullscreenElement
+    if (!full) {
+        document.documentElement.requestFullscreen()
+    } else {
+        document.exitFullscreen()
+    }
+}
 </script>
 <script lang="ts">
 export default {
@@ -15,8 +23,14 @@ export default {
 </script>
 <template>
   <div>
-    <el-button type="primary" size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
-    <el-button type="primary" size="small" icon="FullScreen" circle></el-button>
+    <el-button
+      type="primary"
+      size="small"
+      icon="Refresh"
+      circle
+      @click="updateRefresh"
+    ></el-button>
+    <el-button type="primary" size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
     <el-button type="primary" size="small" icon="Setting" circle></el-button>
     <img
       src="https://images.evetech.net/alliances/99005338/logo?size=64"

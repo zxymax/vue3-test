@@ -12,17 +12,19 @@ import useLayoutSettingStore from '../../store/modules/setting'
 
 let layoutSettingStore = useLayoutSettingStore()
 
-watch(() => layoutSettingStore.refresh, () => {
+watch(
+  () => layoutSettingStore.refresh,
+  () => {
     console.log(123)
     // 点击刷新按钮 路由组件销毁
     flag.value = false
     nextTick(() => {
-        flag.value = true
+      flag.value = true
     })
-})
+  },
+)
 
 let flag = ref(true)
-
 </script>
 
 <script lang="ts">
