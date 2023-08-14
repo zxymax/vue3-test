@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import setting from '@/setting'
+
+import useLayoutSettingStore from '../../store/modules/setting'
+
+let layoutSettingStore = useLayoutSettingStore()
 </script>
 <template>
   <div class="logo">
     <img :src="setting.logo" />
-    <p>{{ setting.title }}</p>
+    <p v-show="!layoutSettingStore.fold?true:false">{{ setting.title }}</p>
   </div>
 </template>
 

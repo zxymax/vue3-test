@@ -10,7 +10,7 @@
 
 <script lang="ts">
 export default {
-    name: 'Main'
+  name: 'Main',
 }
 </script>
 <style scoped>

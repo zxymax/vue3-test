@@ -4,13 +4,13 @@ import useLayoutSettingStore from '../../../store/modules/setting'
 let layoutSettingStore = useLayoutSettingStore()
 
 const changeIcon = () => {
-    layoutSettingStore.fold = !layoutSettingStore.fold
+  layoutSettingStore.fold = !layoutSettingStore.fold
 }
 </script>
 
 <script lang="ts">
 export default {
-    name: 'Breadcrumb'
+  name: 'Breadcrumb',
 }
 </script>
 

@@ -18,11 +18,14 @@ let userStore = useUserStore()
 
 <template>
   <div class="layout_container">
-    <div class="layout_side" :class="{fold:layoutSettingStore.fold?true:false}">
+    <div
+      class="layout_side"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <Logo />
       <el-scrollbar class="scrollbar">
         <el-menu
-          :collapse="layoutSettingStore.fold?true:false"
+          :collapse="layoutSettingStore.fold ? true : false"
           :default-active="$route.path"
           background-color="#001529"
           text-color="white"
@@ -32,10 +35,16 @@ let userStore = useUserStore()
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout_tabbar"  :class="{fold:layoutSettingStore.fold?true:false}">
+    <div
+      class="layout_tabbar"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <TabBar></TabBar>
     </div>
-    <div class="layout_main" :class="{fold:layoutSettingStore.fold?true:false}">
+    <div
+      class="layout_main"
+      :class="{ fold: layoutSettingStore.fold ? true : false }"
+    >
       <Main></Main>
     </div>
   </div>
@@ -50,7 +59,7 @@ let userStore = useUserStore()
     width: $base-menu-width;
     height: 100vh;
     background-color: $base-menu-background-color;
-    transition: all .3s;
+    transition: all 0.3s;
     .scrollbar {
       width: 100%;
       height: calc(100vh - $base-menu-logo-height);
@@ -66,7 +75,7 @@ let userStore = useUserStore()
     width: calc(100% - $base-menu-width);
     height: $base-tabbar-height;
     background-color: cyan;
-    transition: all .3s;
+    transition: all 0.3s;
     &.fold {
       width: calc(100vw - $base-menu-min-width);
       left: $base-menu-min-width;
@@ -81,13 +90,12 @@ let userStore = useUserStore()
     background-color: green;
     padding: 20px;
     overflow: auto;
-    transition: all .3s;
+    transition: all 0.3s;
 
     &.fold {
       width: calc(100vw - $base-menu-min-width);
       left: $base-menu-min-width;
     }
-    
   }
 }
 </style>
