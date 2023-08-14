@@ -193,28 +193,31 @@ import 'virtual:svg-icons-register'
 # 自定义插件注册全局组件 Svg
 
 创建 components/index.ts 文件
+
 ```ts
 // 引入需要注册的组件
 import SvgIcon from './SvgIcon/index.vue'
 
 const allGlobalComponent = {
-    SvgIcon
+  SvgIcon,
 }
 
 // 对外暴露一个插件对象
 export default {
-    install(app) { // 名字必须是install
-        console.log('install components')
+  install(app) {
+    // 名字必须是install
+    console.log('install components')
 
-        Object.keys(allGlobalComponent).forEach(key => {
-            // 注册为全局组件
-            app.component(key, allGlobalComponent[key])
-        })
-    }
+    Object.keys(allGlobalComponent).forEach((key) => {
+      // 注册为全局组件
+      app.component(key, allGlobalComponent[key])
+    })
+  },
 }
 ```
 
-mian.ts 文件 引入 components/index.ts 文件 
+mian.ts 文件 引入 components/index.ts 文件
+
 ```ts
 import globalComponent from '@/components'
 
@@ -222,7 +225,9 @@ app.use(globalComponent)
 ```
 
 # 继承Sass
+
 vite.config.ts更新配置
+
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -235,19 +240,21 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         javascriptEnable: true,
-        additionalData: '@import "./src/styles/variable.scss";'
-      }
-    }
-  }
+        additionalData: '@import "./src/styles/variable.scss";',
+      },
+    },
+  },
 })
-
 ```
+
 创建 styles/variable.scss
+
 ```scss
 $color: red;
 ```
 
 使用 variable 变量
+
 <style scoped lang="scss">
 div {
   h1 {
@@ -257,84 +264,87 @@ div {
 </style>
 
 # Mock接口
+
 安装依赖
+
 - vite-plugin-mock 最新版本在vue3中报错 需要安装指定版本 @2.9.6
 - mockjs
 
 更新vite.config.ts配置
+
 ```ts
-export default defineConfig(({command}) => {
+export default defineConfig(({ command }) => {
   return {
     plugins: [
       viteMockServe({
         // default
-        localEnabled: command === 'serve'
-    })
-    ]
+        localEnabled: command === 'serve',
+      }),
+    ],
   }
 })
 ```
 
 #### 创建mock/user.ts
+
 ```ts
 function createUserList() {
-    return [
-        {
-            userId: 1,
-            avatar: 'https://images.evetech.net/types/33328/render?size=64',
-            username: 'admin',
-            password: '111111',
-            desc: 'Plate',
-            roles: ['admin'],
-            buttons: ['cuser.detail'],
-            routes: ['home'],
-            token: 'Admin Token'
-        },
-        {
-            userId: 2,
-            avatar: 'https://images.evetech.net/alliances/99003581/logo?size=64',
-            username: 'system',
-            password: '111111',
-            desc: 'SystemManager',
-            roles: ['manager'],
-            buttons: ['cuser.detail', 'cuser.user'],
-            routes: ['home'],
-            token: 'System Token'
-        }
-    ]
+  return [
+    {
+      userId: 1,
+      avatar: 'https://images.evetech.net/types/33328/render?size=64',
+      username: 'admin',
+      password: '111111',
+      desc: 'Plate',
+      roles: ['admin'],
+      buttons: ['cuser.detail'],
+      routes: ['home'],
+      token: 'Admin Token',
+    },
+    {
+      userId: 2,
+      avatar: 'https://images.evetech.net/alliances/99003581/logo?size=64',
+      username: 'system',
+      password: '111111',
+      desc: 'SystemManager',
+      roles: ['manager'],
+      buttons: ['cuser.detail', 'cuser.user'],
+      routes: ['home'],
+      token: 'System Token',
+    },
+  ]
 }
 
-export default [{
+export default [
+  {
     url: '/api/user/login',
     method: 'post',
-    response: ({body}) => {
-        const { username, password } = body
-        const checkUser = createUserList().find(
-            (item) => item.username === username && item.password === password
-        )
-        if (!checkUser) {
-            return { code: 201, data: { message: '账号密码不正确'}}
-        }
-        const { token } = checkUser 
-        return { code: 200, data: { token }}
-    }
-},
-{
+    response: ({ body }) => {
+      const { username, password } = body
+      const checkUser = createUserList().find(
+        (item) => item.username === username && item.password === password,
+      )
+      if (!checkUser) {
+        return { code: 201, data: { message: '账号密码不正确' } }
+      }
+      const { token } = checkUser
+      return { code: 200, data: { token } }
+    },
+  },
+  {
     url: '/api/user/info',
     method: 'get',
     response: (request) => {
-        const token = request.headers.token
-        const checkUser = createUserList().find(
-            (item) => item.token === token
-        )
-        if (!checkUser) {
-            return { code: 201, data: { message: '获取用户信息失败'}}
-        }
-        return { code: 200, data: {checkUser}}
-    }
-}]
+      const token = request.headers.token
+      const checkUser = createUserList().find((item) => item.token === token)
+      if (!checkUser) {
+        return { code: 201, data: { message: '获取用户信息失败' } }
+      }
+      return { code: 200, data: { checkUser } }
+    },
+  },
+]
 ```
-
 
 ```ts
 // 在main.ts调用接口
@@ -345,7 +355,7 @@ axios({
   method: 'post',
   data: {
     username: 'admin',
-    password: '111111'
-  }
+    password: '111111',
+  },
 })
 ```

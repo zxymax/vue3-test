@@ -4,33 +4,32 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { viteMockServe } from 'vite-plugin-mock'
 import vue from '@vitejs/plugin-vue'
 
-export default defineConfig(({command}) => {
+export default defineConfig(({ command }) => {
   return {
     plugins: [
       vue(),
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-        symbolId: 'icon-[dir]-[name]'
+        symbolId: 'icon-[dir]-[name]',
       }),
       viteMockServe({
         // default
-        localEnabled: command === 'serve'
-      })
-     
+        localEnabled: command === 'serve',
+      }),
     ],
     resolve: {
       alias: {
-        '@': path.resolve('./src')
-      }
+        '@': path.resolve('./src'),
+      },
     },
     css: {
       preprocessorOptions: {
         scss: {
           javascriptEnable: true,
-          additionalData: '@import "./src/styles/variable.scss";'
-        }
-      }
-    }
+          additionalData: '@import "./src/styles/variable.scss";',
+        },
+      },
+    },
   }
 })
 // https://vitejs.dev/config/

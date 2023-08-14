@@ -14,10 +14,9 @@ axios({
   method: 'post',
   data: {
     username: 'admin',
-    password: '111111'
-  }
+    password: '111111',
+  },
 })
-
 
 const app = createApp(App)
 

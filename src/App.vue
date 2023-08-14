@@ -1,6 +1,21 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { Plus } from '@element-plus/icons-vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+
+import request from '@/utils/request'
+
+onMounted(() => {
+  request({
+    url: '/user/login',
+    method: 'post',
+    data: {
+      username: 'admin',
+      password: '111111'
+    }
+  }).then((res) => {console.log(res)})
+})
+
 </script>
 
 <template>
