@@ -5,13 +5,11 @@ import { IUserState } from './types/type'
 import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
 import { constantRoute } from '@/router/routes'
 
-
-
 let useUserStore = defineStore('User', {
   state: (): IUserState => {
     return {
       token: GET_TOKEN(),
-      menuRoutes: constantRoute
+      menuRoutes: constantRoute,
     }
   },
 

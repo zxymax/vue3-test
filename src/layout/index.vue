@@ -16,7 +16,11 @@ let userStore = useUserStore()
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="layout_tabbar">2</div>
+    <div class="layout_tabbar">
+      <el-icon>
+        <Edit></Edit>
+      </el-icon>
+    </div>
     <div class="layout_main">3</div>
   </div>
 </template>
