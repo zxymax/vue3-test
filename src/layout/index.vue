@@ -1,6 +1,21 @@
+<script setup lang="ts">
+import Logo from './logo/index.vue'
+import Menu from './menu/index.vue'
+
+import useUserStore from '@/store/modules/user'
+
+let userStore = useUserStore()
+</script>
 <template>
   <div class="layout_container">
-    <div class="layout_side">1</div>
+    <div class="layout_side">
+      <Logo />
+      <el-scrollbar class="scrollbar">
+        <el-menu background-color="#001529" text-color="white">
+          <Menu :menuList="userStore.menuRoutes" />
+        </el-menu>
+      </el-scrollbar>
+    </div>
     <div class="layout_tabbar">2</div>
     <div class="layout_main">3</div>
   </div>
@@ -15,6 +30,10 @@
     width: $base-menu-width;
     height: 100vh;
     background-color: $base-menu-background-color;
+    .scrollbar {
+      width: 100%;
+      height: calc(100vh - $base-menu-logo-height);
+    }
   }
   .layout_tabbar {
     position: fixed;
