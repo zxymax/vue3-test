@@ -1,14 +1,12 @@
-// 统一管理项目用户相关的接口
-import request from '@/utils/request'
-import { ILoginForm, ILoginResponseData, IUserResponseData } from './types'
+// 统一管理用户相关的接口
+import request from "@/utils/request";
 
 enum API {
-  LOGIN_URL = '/user/login',
-  USERINFO_URL = '/user/info',
+    LOGIN_URL = '/admin/acl/index/login',
+    USERINFO_URL = '/admin/acl/index/info',
+    LOGOUT_URL = '/admin/acl/index/logout'
 }
 
-export const reqLogin = (data: ILoginForm) =>
-  request.post<any, ILoginResponseData>(API.LOGIN_URL, data)
-
-export const reqUserInfo = () =>
-  request.get<any, IUserResponseData>(API.USERINFO_URL)
+export const reqLogin = (data: any) => request.post<any, any>(API.LOGIN_URL, data)
+export const reqUserInfo = () => request.get<any, any>(API.USERINFO_URL)
+export const reqLogOut = () => request.post<any, any>(API.LOGOUT_URL)
