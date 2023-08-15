@@ -4,6 +4,7 @@ import { reqLogin, reqUserInfo, reqLogOut } from '@/api/user'
 import { IUserState } from './types/type'
 import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from '@/utils/token'
 import { constantRoute } from '@/router/routes'
+import { ILoginFormData, ILoginResponseData, IUserInfoResponseData } from '@/api/user/types'
 
 let useUserStore = defineStore('User', {
   state: (): IUserState => {
@@ -16,8 +17,8 @@ let useUserStore = defineStore('User', {
   },
 
   actions: {
-    async userLogin(data: any) {
-      let result: any = await reqLogin(data)
+    async userLogin(data: ILoginFormData) {
+      let result: ILoginResponseData = await reqLogin(data)
       console.log(result)
 
       if (result.code === 200) {
@@ -35,7 +36,7 @@ let useUserStore = defineStore('User', {
       }
     },
     async userInfo() {
-      const result = await reqUserInfo()
+      const result: IUserInfoResponseData = await reqUserInfo()
 
       if (result.code == 200) {
         this.username = result.data.name
@@ -48,7 +49,7 @@ let useUserStore = defineStore('User', {
       }
     },
     async userLogOut() {
-      let result = await reqLogOut()
+      let result: any = await reqLogOut()
       if (result.code == 200) {
         this.token = ''
         this.username = ''
