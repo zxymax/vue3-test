@@ -20,7 +20,6 @@ let userStore = useUserStore()
   <div class="layout_container">
     <div
       class="layout_side"
-      :class="{ fold: layoutSettingStore.fold ? true : false }"
     >
       <Logo />
       <el-scrollbar class="scrollbar">
