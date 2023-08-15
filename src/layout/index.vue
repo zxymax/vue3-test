@@ -18,9 +18,7 @@ let userStore = useUserStore()
 
 <template>
   <div class="layout_container">
-    <div
-      class="layout_side"
-    >
+    <div class="layout_side">
       <Logo />
       <el-scrollbar class="scrollbar">
         <el-menu

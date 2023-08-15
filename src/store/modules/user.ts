@@ -22,7 +22,7 @@ let useUserStore = defineStore('User', {
 
       if (result.code === 200) {
         // pinia 存储token
-       // this.token = result.data.token as string
+        // this.token = result.data.token as string
         this.token = result.data as string
         // SET_TOKEN(result.data.token as string)
         SET_TOKEN(result.data as string)

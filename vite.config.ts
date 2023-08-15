@@ -5,7 +5,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig(({ command, mode }) => {
-  let env = loadEnv(mode, process.cwd()) 
+  let env = loadEnv(mode, process.cwd())
   return {
     server: {
       proxy: {
@@ -15,9 +15,9 @@ export default defineConfig(({ command, mode }) => {
           // 代理跨域
           changeOrigin: true,
           // 路径重写
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        },
+      },
     },
     plugins: [
       vue(),
